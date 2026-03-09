@@ -721,6 +721,7 @@ export class Player {
                      this.manager.emit("debug", `Moonlink.js > Player#skip >> Queue is empty and no current track, cannot trigger autoPlay for guild ${this.guildId}`);
                      return false;
                 }
+                this.manager.emit("playerTriggeredSkip", this, oldTrack, this.current, 0);
                 this.manager.emit("debug", `Moonlink.js > Player#skip >> Queue empty, triggering autoPlay for guild ${this.guildId}`);
                 return await this.node.handleAutoPlay(this, this.current);
             }
